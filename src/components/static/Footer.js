@@ -22,12 +22,15 @@ function Donation() {
                     <Overlay target={ target.current } show={ show } placement="top">
                         {( props ) => (
                         <Tooltip id="overlay-example" {...props}>
-                            Address Copied!
+                            Thanks Friend!
                         </Tooltip>
                         )}
                     </Overlay>
                 </>
 
+            </Navbar.Text>
+            <Navbar.Text>
+                <span style={{fontSize: 12}}>Created with <FontAwesomeIcon icon={['far', 'coffee-togo']}/> by TokenSlinger</span>
             </Navbar.Text>
         </React.Fragment>
     );

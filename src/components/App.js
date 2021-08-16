@@ -10,16 +10,17 @@ import {
 
 // FONT AWESOME LIBRARY
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { fas } from '@fortawesome/free-solid-svg-icons'
-import { fab } from '@fortawesome/free-brands-svg-icons'
-import { far } from '@fortawesome/free-regular-svg-icons'
+import { fal } from '@fortawesome/pro-light-svg-icons'
+import { far } from '@fortawesome/pro-regular-svg-icons'
+import { fas } from '@fortawesome/pro-solid-svg-icons'
+import { fad } from '@fortawesome/pro-duotone-svg-icons'
 
 // Components
 import Header from './static/Header';
 import Footer from './static/Footer';
 
 // Add Icons to library
-library.add(fas, fab, far)
+library.add(fas, fal, fad, far)
 
 function App() {
   return (
