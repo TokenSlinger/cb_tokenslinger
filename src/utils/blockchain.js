@@ -10,7 +10,7 @@ import {NFTMarket} from '../assets/abis/NFTMarket'
 import { ERC20 } from '../assets/abis/ERC20';
 import { StakingRewards } from '../assets/abis/StakingRewards'
 
-export const web3bsc = new Web3('https://bsc-dataseed1.defibit.io/')
+export const web3bsc = new Web3('https://bsc-dataseed1.binance.org:443')
 // export const webmm = new Web3(window.ethereum)
 
 const cryptoBladesAddress = '0x39Bea96e13453Ed52A734B6ACEeD4c41F57B2271';
@@ -59,4 +59,20 @@ export const getStakedSkill = async ( walletAddress ) => {
     const skill = await conStakingReward.methods.balanceOf(walletAddress).call({ from: defaultAddress });
     const converted = web3bsc.utils.fromWei(JSBI.BigInt(skill).toString(), 'ether')
     return parseFloat(converted)
+}
+
+// ASSETS
+export const getAccountCharacters = async ( walletAddress ) => {
+    const characters = await conCryptoBlades.methods.getMyCharacters().call({ from: walletAddress });
+    return characters
+}
+
+export const getAccountWeapons = async ( walletAddress ) => {
+    const weapons = await conCryptoBlades.methods.getMyWeapons().call({ from: walletAddress });
+    return weapons
+}
+
+export const getAccountShields = async ( walletAddress ) => {
+    const shields = await conShield.methods.getOwned().call({ from: walletAddress });
+    return shields
 }

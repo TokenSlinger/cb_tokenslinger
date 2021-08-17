@@ -1,8 +1,7 @@
 import React from "react";
-import { Container, Row, Col, Badge } from "react-bootstrap";
+import { Container, Row, Col, Badge, Tab, Tabs } from "react-bootstrap";
 import { useParams } from "react-router-dom";
-import { getBnbBalance, getUnclaimedSkill, getInGameOnlySkill, getWalletSkill, getStakedSkill  } from "../utils/blockchain";
-import BNB from '../assets/images/bnb.png'
+import { getBnbBalance, getUnclaimedSkill, getInGameOnlySkill, getWalletSkill, getStakedSkill, getAccountWeapons, getAccountShields, getAccountCharacters } from "../utils/blockchain";
 
 function Balances({ bnbBalance, stakedSkillBalance, unclaimedSkillBalance, inGameSkillBalance, walletSkillBalance }) {
     return(
@@ -38,6 +37,42 @@ function Balances({ bnbBalance, stakedSkillBalance, unclaimedSkillBalance, inGam
     )
 }
 
+function Characters({ accountCharacters }) {
+    return (
+        <Container fluid>
+            <Row>
+                <Col>
+                    {accountCharacters.join(', ')}
+                </Col>
+            </Row>
+        </Container>
+    )
+}
+
+function Weapons({ accountWeapons }) {
+    return (
+        <Container fluid>
+            <Row>
+                <Col>
+                {accountWeapons.join(', ')}
+                </Col>
+            </Row>
+        </Container>
+    )
+}
+
+function Shields({ accountShields }) {
+    return (
+        <Container fluid>
+            <Row>
+                <Col>
+                {accountShields.join(', ')}
+                </Col>
+            </Row>
+        </Container>
+    )
+}
+
 export default function Account() {
     
     const { address } = useParams()
@@ -58,10 +93,13 @@ export default function Account() {
             setUnclaimedSkillBalance( await getUnclaimedSkill( address ) )
             setInGameSkillBalance( await getInGameOnlySkill( address ) )
             setWalletSkillBalance( await getWalletSkill( address ) )
+            setAccountWeapons( await getAccountWeapons( address ) )
+            setAccountShields( await getAccountShields( address ) )
+            setAccountCharacters( await getAccountCharacters( address ) )
         }
 
         fetchData()
-    })
+    }, [])
 
     return(
         <React.Fragment>
@@ -72,6 +110,18 @@ export default function Account() {
                 inGameSkillBalance={ inGameSkillBalance }
                 walletSkillBalance={ walletSkillBalance }
             />
+            <div style={{paddingTop: 50}}></div>
+            <Tabs defaultActiveKey="Characters" id="tab-bar" className="mb-3">
+                <Tab eventKey="Characters" title="Characters">
+                    <Characters accountCharacters={ accountCharacters } />
+                </Tab>
+                <Tab eventKey="Weapons" title="Swords">
+                    <Weapons accountWeapons={ accountWeapons } />
+                </Tab>
+                <Tab eventKey="Shields" title="Shields">
+                    <Shields accountShields={ accountShields} />
+                </Tab>
+            </Tabs>
         </React.Fragment>
     )
 
