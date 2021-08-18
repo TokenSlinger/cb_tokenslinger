@@ -82,7 +82,7 @@ function Character({ id }) {
                 { element }
             </td>
             <td>
-                { level }
+                { level+1 }
             </td>
             <td>
                 { xpProgress }/{experienceTable[level]}
