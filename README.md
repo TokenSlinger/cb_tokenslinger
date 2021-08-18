@@ -20,3 +20,4 @@ CB TokenSlinger is an application for Cryptoblades players to help view and mana
 # Disclaimer
 1. Not associated with CryptoBlades
 2. Just a fan that like to code and play with smart contracts
+3. I am not a Software Engineer. I do this is a hobby to learn.
