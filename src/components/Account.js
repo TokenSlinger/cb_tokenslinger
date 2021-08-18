@@ -71,7 +71,7 @@ function Character({ id }) {
         }
 
         fetchData()
-    }, [])
+    }, [id])
 
     return (
         <tr>
@@ -132,7 +132,7 @@ function Weapon({ id }) {
         }
 
         fetchData()
-    }, [])
+    }, [ id ])
 
     if( weaponData ) {
         return(
@@ -249,7 +249,7 @@ function Shield({ id }) {
         }
 
         fetchData()
-    }, [])
+    }, [ id ])
 
     if( shieldData ) {
         return(
@@ -338,7 +338,7 @@ export default function Account() {
         }
 
         fetchData()
-    }, [])
+    }, [ address ])
 
     return(
         <React.Fragment>

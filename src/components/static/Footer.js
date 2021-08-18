@@ -16,7 +16,7 @@ function Donation() {
         <React.Fragment>
             <Navbar.Text>
 
-                <span style={{fontSize: 12}}>Please consider donating SKILL/BNB to: <b>0xE7E5cf966f33D557ab56A720A04C024863cfE4c4</b></span>{' '}
+                <span style={{fontSize: 12}}>Please consider donating SKILL/BNB to: <b>0x8D4bdf0b1AD8b898eC515d009b906B34cB14dA86</b></span>{' '}
                 <>
                     <span ref={ target } style={{cursor: 'pointer'}} onClick={copyAddress}><FontAwesomeIcon icon={['far', 'copy']} /></span>
                     <Overlay target={ target.current } show={ show } placement="top">
