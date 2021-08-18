@@ -49,7 +49,16 @@ export default function Header() {
                             <Nav.Link>Trade</Nav.Link>
                         </LinkContainer> */}
 
+
+
                     </Nav>
+                    <Nav className="me-auto">
+                        <Navbar.Text>
+                                <span style={{fontSize: 12}}>This app is not affiliated with CryptoBlades</span>
+                        </Navbar.Text>
+                    </Nav>
+
+
                     
                     <Button disabled style={{marginRight: 10}} size="sm" variant="outline-light">Add Account</Button>{' '}
                     <Button disabled size="sm" variant="outline-light">Connect MetaMask</Button>

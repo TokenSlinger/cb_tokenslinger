@@ -88,6 +88,11 @@ export const getCharacterData = async( id ) => {
     return data
 }
 
+export const getUnclaimedXp = async( id ) => {
+    const data = conCryptoBlades.methods.getXpRewards(`${id}`).call({ from: defaultAddress });
+    return data
+}
+
 // WEAPONS
 const WeaponElement = {
     Fire: 0,

@@ -14,6 +14,7 @@ import {
     getCharacterData,
     getWeaponData,
     getShieldData,
+    getUnclaimedXp,
  } from "../utils/blockchain";
  import { elementTable, experienceTable } from "../utils/constants";
 
@@ -56,6 +57,7 @@ function Character({ id }) {
     const [ level, setLevel ] = React.useState("Loading")
     const [ element, setElement ] = React.useState("Loading")
     const [ xpProgress, setXpProgress ] = React.useState("Loading")
+    const [ unclaimedXp, setUnclaimedXp ] = React.useState("Loading")
     const [ staminaTimeStamp, setStaminaTimeStamp ] = React.useState("Loading")
 
     React.useEffect(() => {
@@ -65,6 +67,7 @@ function Character({ id }) {
             setXpProgress(charData[0])
             setLevel(parseInt(charData[1], 10))
             setElement(elementTable[charData[2]])
+            setUnclaimedXp( await getUnclaimedXp( id ) )
         }
 
         fetchData()
@@ -85,6 +88,9 @@ function Character({ id }) {
                 { xpProgress }/{experienceTable[level]}
             </td>
             <td>
+                { unclaimedXp }
+            </td>
+            <td>
                 { stamina }/200
             </td>
         </tr>
@@ -103,6 +109,7 @@ function Characters({ accountCharacters }) {
                                 <th>Element</th>
                                 <th>Level</th>
                                 <th>XP</th>
+                                <th>Unclaimed XP</th>
                                 <th>Stamina</th>
                             </tr>
                         </thead>
